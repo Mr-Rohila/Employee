@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         MAVEN_HOME = tool 'Maven'
+        JAVA_HOME = tool 'Java'
         PORT = '8081'
     }
 
@@ -28,8 +29,8 @@ pipeline {
         }
 
         stage('Run Application') {
-            steps {
-                bat 'start /B java -jar target\\Employee.jar'
+            steps {            
+                bat "start /B \"${JAVA_HOME}\\bin\\java\" -jar target\\Employee.jar"
             }
         }
     }
