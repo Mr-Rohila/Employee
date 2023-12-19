@@ -2,18 +2,26 @@ pipeline {
     agent any
     
     environment {
+        MAVEN_HOME = tool 'Maven'
         PORT = '8081'
     }
 
     stages {
+        stage('Build') {
+            steps {
+                bat "\"${MAVEN_HOME}\\bin\\mvn\" clean package"
+            }
+        }
+
         stage('Prepare Environment') {
             steps {
                 script {
-                    def existingProcess = sh(script: "lsof -i :${PORT} -t", returnStatus: true, scriptOnError: false) ?: bat(script: "netstat -ano | findstr :${PORT} | findstr LISTENING | awk '{print \$5}'", returnStatus: true, scriptOnError: false)
+                    def existingProcess = bat(script: "netstat -ano | findstr :${PORT} | findstr LISTENING", returnStatus: true) ?: 1
 
                     if (existingProcess == 0) {
                         echo "Terminating existing process on port ${PORT}"
-                        sh "kill -9 \$(lsof -i :${PORT} -t)"
+                        bat "taskkill /F /PID \$(netstat -ano | findstr :${PORT} | findstr LISTENING | awk '{print \$5}')"
+                        bat 'timeout /t 2 /nobreak > nul'
                     }
                 }
             }
@@ -21,9 +29,7 @@ pipeline {
 
         stage('Run Application') {
             steps {
-                script {
-                    sh "nohup java -jar target/Employee.jar > /dev/null 2>&1 &"
-                }
+                bat 'start /B java -jar target\\Employee.jar'
             }
         }
     }
