@@ -14,23 +14,21 @@ pipeline {
             }
         }
 
-        stage('Prepare Environment') {
+        stage('Stop Service') {
             steps {
-                script {
-                    def existingProcess = bat(script: "netstat -ano | findstr :${PORT} | findstr LISTENING", returnStatus: true) ?: 1
-
-                    if (existingProcess == 0) {
-                        echo "Terminating existing process on port ${PORT}"
-                        bat "taskkill /F /PID \$(netstat -ano | findstr :${PORT} | findstr LISTENING | awk '{print \$5}')"
-                        bat 'timeout /t 2 /nobreak > nul'
-                    }
-                }
+                bat "nssm stop Employee"
             }
         }
 
-        stage('Run Application') {
+ 		stage('Copy Jar File') {
+            steps {
+                bat "copy /Y target\Employee.jar D:\Temp"
+            }
+        }
+
+        stage('Run Employee Service') {
             steps {            
-                bat "start /B \"${JAVA_HOME}\\bin\\java\" -jar target\\Employee.jar"
+                bat "nssm start Employee"
             }
         }
     }
