@@ -9,7 +9,7 @@
 	<springProfile name="prod">
 		<appender name="FILE"
 			class="ch.qos.logback.core.FileAppender">
-			<file>./logs/employee-service.log</file>
+			<file>./employee-service.log</file>
 			<append>true</append>
 			<encoder>
 				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}
