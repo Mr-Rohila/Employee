@@ -3,8 +3,6 @@ pipeline {
     
     environment {
         MAVEN_HOME = tool 'Maven'
-        JAVA_HOME = tool 'Java'
-        PORT = '8081'
     }
 
     stages {
@@ -22,7 +20,7 @@ pipeline {
 
  		stage('Copy Jar File') {
             steps {
-                bat "copy /Y target\Employee.jar D:\Temp"
+                bat "copy /Y target\\Employee.jar D:\\Temp"
             }
         }
 
