@@ -38,7 +38,10 @@ public class EmployeController {
 	public GenericResponse employeeById(@PathVariable Long employeeId) throws ExceptionResponse {
 		return GenericResponse.builder().data(employeService.employeeById(employeeId)).build();
 	}
-	
-	
+
+	@GetMapping("test")
+	public GenericResponse test() {
+		return GenericResponse.builder().message("working successfully").build();
+	}
 
 }
