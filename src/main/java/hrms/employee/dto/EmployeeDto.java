@@ -57,7 +57,7 @@ public class EmployeeDto {
 	@Length(min = 10, max = 10, message = "Invalid Mobile No")
 	private String mobileNo;
 
-	@NotBlank(message = "Parmanent Address can not be empty")
+	@NotBlank(message = "Permanent Address can not be empty")
 	private String permanentAddress;
 
 	private String communicationAddress;

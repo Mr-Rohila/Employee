@@ -19,7 +19,7 @@ public interface EmployeService {
 
 	Employee employeeById(Long employeeId) throws ExceptionResponse;
 
-	List<EmployeeDto> csvToEmployeeDto(InputStream inputStream) throws IOException, ExceptionResponse;
+	String csvToEmployeeDto(InputStream inputStream) throws IOException, ExceptionResponse;
 
 	List<String> employeeUploadCSVHeader();
 }

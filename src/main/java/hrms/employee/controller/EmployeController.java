@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import hrms.employee.dto.EmployeeDto;
+import hrms.employee.exception.CSVErrorException;
 import hrms.employee.exception.ExceptionResponse;
 import hrms.employee.response.GenericResponse;
 import hrms.employee.services.EmployeService;
@@ -51,16 +52,16 @@ public class EmployeController {
 		return GenericResponse.builder().data(employeService.employeeById(employeeId)).build();
 	}
 
-	@GetMapping("test")
-	public GenericResponse test() {
-		return GenericResponse.builder().message("working successfully").build();
-	}
-
 	@PostMapping("csv/upload")
-	public GenericResponse csvUpload(@RequestParam MultipartFile file) throws IOException, ExceptionResponse {
+	public GenericResponse csvUpload(@RequestParam MultipartFile file)
+			throws IOException, ExceptionResponse, CSVErrorException {
 		if (CSVHelper.hasCSVFormat(file)) {
-			employeService.csvToEmployeeDto(file.getInputStream());
-			return GenericResponse.builder().message("CSV Data Upload Successfully").build();
+			String message = employeService.csvToEmployeeDto(file.getInputStream());
+			if (message.isBlank())
+				return GenericResponse.builder().message("CSV Data Upload Successfully").build();
+			else
+				throw CSVErrorException.builder().message(message).build();
+
 		}
 		return GenericResponse.builder().message("Invalid CSV Format").build();
 	}

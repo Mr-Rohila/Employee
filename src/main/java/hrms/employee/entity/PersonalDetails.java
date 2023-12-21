@@ -32,12 +32,12 @@ public class PersonalDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    @Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	private EmployeeTitle title;
 
 	private String fullName;
 
-    @Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -61,6 +61,7 @@ public class PersonalDetails {
 				SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 				this.dateOfJoining = dateFormat.parse(dto.getDateOfJoining());
 			} catch (ParseException e) {
+				this.dateOfJoining = null;
 			}
 		this.setEmployee(employee);
 	}
