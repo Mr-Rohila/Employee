@@ -12,3 +12,7 @@ spring:
       ddl-auto: update
   application:
     name: Employee-Service
+    
+employee:
+  csv:
+    header: Sno, District, SubDistrict, FromYear, ToYear, FromVolume, ToVolume, FromDoc, ToDoc

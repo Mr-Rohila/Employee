@@ -11,4 +11,5 @@ public class ExceptionResponse extends Exception {
 	private static final long serialVersionUID = -5365791206958726782L;
 
 	private String message;
+
 }

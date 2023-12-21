@@ -1,5 +1,7 @@
 package hrms.employee.services;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +16,10 @@ public interface EmployeService {
 	public EmployeeDto saveEmployee(EmployeeDto employeeDto) throws ExceptionResponse;
 
 	List<Employee> listOfAllEmployee();
-	
+
 	Employee employeeById(Long employeeId) throws ExceptionResponse;
+
+	List<EmployeeDto> csvToEmployeeDto(InputStream inputStream) throws IOException, ExceptionResponse;
+
+	List<String> employeeUploadCSVHeader();
 }

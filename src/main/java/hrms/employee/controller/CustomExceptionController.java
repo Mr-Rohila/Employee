@@ -11,6 +11,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MultipartException;
 
 import hrms.employee.exception.ExceptionResponse;
 import hrms.employee.response.GenericErrorResponse;
@@ -32,7 +34,8 @@ public class CustomExceptionController {
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler({ HttpMessageNotReadableException.class, HttpRequestMethodNotSupportedException.class })
+	@ExceptionHandler({ HttpMessageNotReadableException.class, HttpRequestMethodNotSupportedException.class,
+			MultipartException.class,MethodArgumentTypeMismatchException.class })
 	public GenericErrorResponse ex(Exception exception) {
 		return GenericErrorResponse.builder().status(HttpStatus.BAD_REQUEST.value()).error(exception.getMessage())
 				.build();
