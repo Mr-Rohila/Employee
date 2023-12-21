@@ -58,7 +58,7 @@ public class EmployeeDto {
 	private String mobileNo;
 
 	@NotBlank(message = "Parmanent Address can not be empty")
-	private String parmanentAddress;
+	private String permanentAddress;
 
 	private String communicationAddress;
 	private boolean bothAddressSame;

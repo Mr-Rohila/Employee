@@ -71,7 +71,8 @@ public class EmployeController {
 		List<String> employeeUploadCSVHeader = employeService.employeeUploadCSVHeader();
 
 		// Convert the content to bytes
-		byte[] csvBytes = employeeUploadCSVHeader.toString().getBytes(StandardCharsets.UTF_8);
+		byte[] csvBytes = employeeUploadCSVHeader.toString().replace("[", "").replace("]", "")
+				.getBytes(StandardCharsets.UTF_8);
 
 		// Set headers for the response
 		HttpHeaders headers = new HttpHeaders();

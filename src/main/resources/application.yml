@@ -18,4 +18,4 @@ spring:
     
 employee:
   csv:
-    header: Sno, District, SubDistrict, FromYear, ToYear, FromVolume, ToVolume, FromDoc, ToDoc
+    header: Title,Full-Name, Gender, Date-Of-Joining, LogonId, Password, Role, EmailId, MobileNo, Parmanent-Address, Communication-Address, Alowed-Leaves-In-Month, Carry-Forward(Yes/No), Name-In-Bank, Bank-Name, Branch-Name, Ifsc-Code, Account-Number

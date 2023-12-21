@@ -21,7 +21,7 @@ public class AddressDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String parmanentAddress;
+	private String permanentAddress;
 
 	private String communicationAddress;
 
@@ -36,7 +36,7 @@ public class AddressDetails {
 	}
 
 	public AddressDetails(EmployeeDto dto, Employee employee) {
-		this.parmanentAddress = dto.getParmanentAddress();
+		this.permanentAddress = dto.getPermanentAddress();
 		this.bothSame = dto.isBothAddressSame();
 		if (!bothSame)
 			this.communicationAddress = dto.getCommunicationAddress();
