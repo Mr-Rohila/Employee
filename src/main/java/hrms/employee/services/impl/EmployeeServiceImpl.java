@@ -88,7 +88,7 @@ public class EmployeeServiceImpl implements EmployeService {
 	}
 
 	@Override
-	public String csvToEmployeeDto(InputStream inputStream) throws IOException {
+	public String uploadEmployeeCsv(InputStream inputStream) throws IOException {
 
 		StringBuffer errorTxt = new StringBuffer();
 
@@ -116,7 +116,7 @@ public class EmployeeServiceImpl implements EmployeService {
 						bufferedReader.close();
 						return errorTxt.toString();
 					}
-				}
+				} // header check closed
 
 				try {
 					EmployeeDto csvRecordToEmployeeDto = csvRecordToEmployeeDto(record);

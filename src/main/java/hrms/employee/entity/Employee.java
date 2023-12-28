@@ -1,5 +1,6 @@
 package hrms.employee.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hrms.employee.dto.EmployeeDto;
@@ -59,5 +60,6 @@ public class Employee {
 		this.setPassword(dto.getPassword());
 		this.setRole(dto.getRole());
 		this.setEnable(dto.isEnable());
+		this.leaveDetails = new ArrayList<>();
 	}
 }

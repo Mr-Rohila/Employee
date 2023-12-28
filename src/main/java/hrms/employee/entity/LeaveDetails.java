@@ -3,10 +3,7 @@ package hrms.employee.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import hrms.employee.dto.EmployeeDto;
-import hrms.employee.enums.MonthName;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,9 +29,6 @@ public class LeaveDetails {
 
 	private int takeLeave;
 
-    @Enumerated(EnumType.STRING)
-	private MonthName monthName;
-
 	private int carryForwardLeave;
 
 	private int totalRemaining;
@@ -50,7 +44,6 @@ public class LeaveDetails {
 	public LeaveDetails(EmployeeDto dto, Employee employee) {
 		this.alowedLeaves = dto.getAlowedLeavesInMonth();
 		this.carryForward = dto.isCarryForward();
-		this.monthName = MonthName.April; // set month name dynamic
 		this.employee = employee;
 
 	}

@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import hrms.employee.dto.EmployeeDto;
+import hrms.employee.dto.GenericResponse;
 import hrms.employee.exception.CSVErrorException;
 import hrms.employee.exception.ExceptionResponse;
-import hrms.employee.response.GenericResponse;
 import hrms.employee.services.EmployeService;
 import hrms.employee.utils.CSVHelper;
 import jakarta.validation.Valid;
@@ -53,10 +53,9 @@ public class EmployeController {
 	}
 
 	@PostMapping("csv/upload")
-	public GenericResponse csvUpload(@RequestParam MultipartFile file)
-			throws IOException, ExceptionResponse, CSVErrorException {
+	public GenericResponse csvUpload(@RequestParam MultipartFile file) throws IOException, CSVErrorException {
 		if (CSVHelper.hasCSVFormat(file)) {
-			String message = employeService.csvToEmployeeDto(file.getInputStream());
+			String message = employeService.uploadEmployeeCsv(file.getInputStream());
 			if (message.isBlank())
 				return GenericResponse.builder().message("CSV Data Upload Successfully").build();
 			else

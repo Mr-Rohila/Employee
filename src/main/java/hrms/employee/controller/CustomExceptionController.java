@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MultipartException;
 
+import hrms.employee.dto.GenericErrorResponse;
 import hrms.employee.exception.CSVErrorException;
 import hrms.employee.exception.ExceptionResponse;
-import hrms.employee.response.GenericErrorResponse;
 
 @RestControllerAdvice
 public class CustomExceptionController {
@@ -57,7 +57,7 @@ public class CustomExceptionController {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);
-		headers.setContentDispositionFormData("attachment", "textfile.txt");
+		headers.setContentDispositionFormData("attachment", "Response.txt");
 		return ResponseEntity.status(406).headers(headers).body(exception.getMessage().getBytes());
 	}
 
