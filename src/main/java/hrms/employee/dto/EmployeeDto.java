@@ -32,6 +32,7 @@ public class EmployeeDto {
 	private Role role;
 
 	/* PersonalDetails */
+	@NotNull(message = "title can not be null")
 	private EmployeeTitle title;
 
 	@NotBlank(message = "Full Name can not be empty")

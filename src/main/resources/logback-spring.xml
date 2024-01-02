@@ -6,7 +6,7 @@
 		resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
 	<!-- Configuration for production profile -->
-	<springProfile name="prod">
+	<springProfile name="PROD">
 		<!-- <appender name="FILE" class="ch.qos.logback.core.FileAppender"> <file>./employee-service-%d{yyyy-MM-dd}.log</file> 
 			<append>true</append> <encoder> <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] 
 			- %msg%n</pattern> </encoder> </appender> -->

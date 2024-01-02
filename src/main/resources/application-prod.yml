@@ -7,11 +7,22 @@ spring:
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
+    show-sql: true
+    
   application:
     name: Employee-Service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.60:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
     
 employee:
   csv:
