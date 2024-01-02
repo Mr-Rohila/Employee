@@ -24,10 +24,10 @@ pipeline {
             }
         }
 
-        stage('Run Employee Service') {
-            steps {            
-                bat "nssm start Employee"
-            }
+    }
+     post {
+        always {
+           bat "nssm start Employee"
         }
     }
 }
