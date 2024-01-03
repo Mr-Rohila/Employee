@@ -16,7 +16,7 @@ pipeline {
             steps {
                 bat "net stop Employee"
                 sleep time: 10, unit: 'SECONDS'
-             	bat 'sc query Attendance | find "STATE" | find "STOPPED" && echo "Service stopped"'
+             	bat 'sc query Employee | find "STATE" | find "STOPPED" && echo "Service stopped"'
             }
         }
 
