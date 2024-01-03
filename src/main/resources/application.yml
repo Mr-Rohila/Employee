@@ -23,7 +23,9 @@ management:
       exposure:
         include:
         - '*'
-    
+logging:
+  file:
+    name: D:\New folder\employee.log    
 employee:
   csv:
     header: Title,Full-Name, Gender, Date-Of-Joining, LogonId, Password, Role, EmailId, MobileNo, Permanent-Address, Communication-Address, Alowed-Leaves-In-Month, Carry-Forward(Yes/No), Name-In-Bank, Bank-Name, Branch-Name, Ifsc-Code, Account-Number
