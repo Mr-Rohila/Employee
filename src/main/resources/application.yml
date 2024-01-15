@@ -23,6 +23,12 @@ management:
       exposure:
         include:
         - '*'
+springdoc:
+  api-docs:
+    path: /employee/v3/api-docs    
+  swagger-ui:
+    path: /employee/v3        
+        
 logging:
   file:
     name: D:\New folder\employee.log    
