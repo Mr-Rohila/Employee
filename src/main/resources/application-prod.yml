@@ -6,3 +6,9 @@ spring:
   config:
     import:
     - configserver:http://192.168.1.60:5050
+    
+logging:
+  level:
+    root: INFO
+  file:
+    name: G:\HRMS_API\Employee\app.log
