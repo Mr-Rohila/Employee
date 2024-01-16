@@ -1,37 +1,8 @@
 server:
   port: 8081
 spring:
-  datasource:
-    url: jdbc:mysql://192.168.1.60:3306/employee
-    username: ankush
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    
   application:
     name: Employee-Service
-eureka:
-  client:
-    service-url:
-      defaultZone: http://192.168.1.60:8761/eureka/
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-        - '*'
-springdoc:
-  api-docs:
-    path: /employee/v3/api-docs    
-  swagger-ui:
-    path: /employee/v3
-    
-logging:
-  file:
-    name: G:\HRMS_API\Employee\app.log
-employee:
-  csv:
-    header: Title,Full-Name, Gender, Date-Of-Joining, LogonId, Password, Role, EmailId, MobileNo, Permanent-Address, Communication-Address, Alowed-Leaves-In-Month, Carry-Forward(Yes/No), Name-In-Bank, Bank-Name, Branch-Name, Ifsc-Code, Account-Number
+  config:
+    import:
+    - configserver:http://192.168.1.60:5050
